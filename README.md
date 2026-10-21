@@ -171,12 +171,10 @@ Tampermonkey 会自动弹出安装页，点“安装”。
 
 ### 默认：自动搜索
 
-`config.json` 里的 `transcript_dir` 留空即可：
+把 `config.json` 里的 `transcript_dir` 留空即可（默认已经是空）：
 
 ```json
-{
-  "transcript_dir": ""
-}
+"transcript_dir": ""
 ```
 
 `run.bat` 启动时会自动搜索：
@@ -192,17 +190,15 @@ Tampermonkey 会自动弹出安装页，点“安装”。
 [detect] 使用译文目录: D:\Apps\LiveTranslate\transcripts
 ```
 
-如果同时装了两个 LiveTranslate，会选**最新写过译文**的那个。
-如果启动时没找到，程序会继续运行，并**每 15 秒再自动找一次**；你先启动 LiveTranslate 也可以。
+如果同时装了两个 LiveTranslate，会优先选常见位置里**最新写过译文**的那个；装在非常规位置时建议手动指定 `transcript_dir`。
+如果启动时没找到，程序会继续运行，并**每隔约 15 秒再自动找一次**；你先启动 LiveTranslate 也可以。
 
 ### 手动指定（最稳）
 
-如果自动找错，或者你想固定用某一个目录，把 `config.json` 改成：
+如果自动找错，或者你想固定用某一个目录，只改 `config.json` 里的 `transcript_dir` 这一行：
 
 ```json
-{
-  "transcript_dir": "D:\\Apps\\LiveTranslate\\transcripts"
-}
+"transcript_dir": "D:\\Apps\\LiveTranslate\\transcripts"
 ```
 
 注意 Windows 路径里的反斜杠要写成两个 `\\`。
