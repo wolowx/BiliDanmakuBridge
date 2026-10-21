@@ -1,0 +1,13 @@
+{
+  "port": 8770,
+  "transcript_dir": "",
+  "prefix": "【",
+  "suffix": "】",
+  "max_length": 40,
+  "min_length": 2,
+  "strip_period": true,
+  "split_interval": 2.0,
+  "stale_seconds": 60,
+  "dedupe_seconds": 15,
+  "poll_interval": 0.5
+}
