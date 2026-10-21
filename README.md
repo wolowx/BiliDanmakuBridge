@@ -66,16 +66,38 @@ run.bat --transcript-dir "D:\Apps\LiveTranslate\transcripts"
 
 ## 配置 `config.json`
 
+```json
+{
+  "port": 8770,
+  "transcript_dir": "",
+  "prefix": "【",
+  "suffix": "】",
+  "max_length": 40,
+  "min_length": 2,
+  "strip_period": true,
+  "split_interval": 2.0,
+  "stale_seconds": 60,
+  "dedupe_seconds": 15,
+  "poll_interval": 0.5
+}
+```
+
 | 项 | 说明 |
 |---|---|
-| `transcript_dir` | 空 = 自动搜索；也可填 LiveTranslate 的 `transcripts` 绝对路径 |
-| `prefix` / `suffix` | 弹幕前后缀，默认 `【】`；都不要就留空 |
-| `max_length` | 每条总长上限（含前后缀），默认 40。超长自动在标点处断句；0 = 不限（会被B站截断） |
-| `min_length` | 短于这个字数不发 |
-| `strip_period` | 删末尾句号 |
-| `split_interval` | 分段发送间隔，默认 2 秒 |
+| `port` | 本地服务端口，默认 `8770`。油猴脚本里也写死 8770，改端口要同时改脚本 |
+| `transcript_dir` | 空 = 自动搜索；也可以填 LiveTranslate 的 `transcripts` 绝对路径 |
+| `prefix` / `suffix` | 弹幕前后加的字，默认 `【译文】`；都不想要就都留空 |
+| `max_length` | **每条弹幕的总长上限**（含前后缀，按汉字数算）。默认 **40** —— B站上限是 80 个「字符」，一个汉字/全角标点占 2 字符，所以实际只有 40 字。超过时**不会截断丢内容**，而是自动在标点处断句、分成多条发出；设为 `0` = 完全不限长（会被B站截断） |
+| `min_length` | 短于这个字数的译文不发（挡掉「嗯。」「啊！」这种） |
+| `strip_period` | **删掉译文末尾的句号**，默认 `true`。只删末尾——句中的句号，以及 `！` `？` `，` `…` 全部保留。设为 `false` = 末尾句号也原样保留。`。` / `．` 会删，半角 `.` 不删（否则「等等...」的省略号会被误删） |
+| `split_interval` | 断句后**每段之间隔几秒**，默认 `2.0`。按上一段**发送完成**的时刻开始计时 |
+| `stale_seconds` | 超过这么久还没发出去的译文自动丢弃（防止一开机补发一堆旧的） |
+| `dedupe_seconds` | 这么短时间内重复的同一句只发一次 |
+| `poll_interval` | 读取译文文件的间隔，默认 0.5 秒 |
 
-其余 `stale_seconds`、`dedupe_seconds`、`poll_interval` 保持默认即可。改完重启 `run.bat`。
+**断句规则**：优先在句末标点（`。！？；…`）处断开，没有就用逗号（`，、`），再没有就在上限处硬切。每一段都会各自带上 `【】`，内容不会丢。
+
+改完要**重启 `run.bat`** 才生效。
 
 ## 安全
 
