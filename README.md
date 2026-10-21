@@ -38,7 +38,7 @@ B站直播间
 
 ## 安装
 
-1. 下载本项目：GitHub 页面 → Code → Download ZIP，解压到任意目录，例如 `D:\Tools\BiliDanmakuBridge`。
+1. 下载本项目：GitHub 页面 → Releases → BiliDanmakuBridge.zip，解压到任意目录，例如 `D:\Tools\BiliDanmakuBridge`。
 2. 安装 Python：<https://www.python.org/downloads/>，安装时勾选 **Add python.exe to PATH**。
 3. 安装篡改猴：用上面的 Edge 商店链接，装好并启用。
 4. 启动 [LiveTranslate](https://github.com/TheDeathDragon/LiveTranslate)，开始翻译，确认它的 `transcripts` 文件夹里有 `livetrans_*_translation.txt`。
