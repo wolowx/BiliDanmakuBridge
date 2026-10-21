@@ -61,7 +61,7 @@ B站直播间
 | 浏览器 + Tampermonkey | Chrome / Edge / Firefox 都可以，装“篡改猴”扩展 |
 | B站小号 | 强烈建议用小号，不要用大号 |
 
-> 没有 Python 也可以先用 LiveTranslate 自带的 `.venv` 里的 Python，但最省事的办法是单独装一个 Python。
+> 不想单独装 Python 也可以，用 LiveTranslate 的 `.venv\Scripts\python.exe` 手动运行 `sender_server.py`；但 `run.bat` 默认找系统 Python，最省事的办法还是单独装一个。
 
 ---
 
@@ -167,7 +167,7 @@ Tampermonkey 会自动弹出安装页，点“安装”。
 
 ## 四、LiveTranslate 装在别处怎么办
 
-这是本版本最重要的改动：**不再写死 `E:\LiveTranslate`**。
+这是本版本最重要的改动：**不再写死固定的 LiveTranslate 安装路径**。
 
 ### 默认：自动搜索
 
